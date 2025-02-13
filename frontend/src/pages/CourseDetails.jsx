@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import api from '../services/api.js'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import api from '../services/api.js';
 
 const CourseDetails = () => {
-
     const { id } = useParams()
-    const [curso, setCursos] = useState(null)
+    const [curso, setCurso] = useState(null)
+    const [modulos, setModulos] = useState([])
     const [carregando, setCarregando] = useState(true)
     const [erro, setErro] = useState('')
 
     useEffect(() => {
         const buscarCurso = async () => {
-            
             try {
                 const response = await api.get(`/cursos/${id}`)
-                setCursos(response.data)
+                setCurso(response.data)
             } catch (error) {
                 setErro('Erro ao carregar detalhes do curso.')
                 console.error(error)
@@ -24,6 +23,19 @@ const CourseDetails = () => {
         }
 
         buscarCurso()
+    }, [id])
+
+    useEffect(() => {
+        const buscarModulos = async () => {
+            try {
+                const response = await api.get(`/cursos/${id}/modulos`)
+                setModulos(response.data)
+            } catch (error) {
+                console.error('Erro ao buscar módulos:', error)
+            }
+        }
+
+        buscarModulos()
     }, [id])
 
     if (carregando) {
@@ -39,35 +51,22 @@ const CourseDetails = () => {
             <h1>{curso.titulo}</h1>
             <p>{curso.descricao}</p>
             <p>Preço: R$ {curso.preco.toFixed(2)}</p>
-            {/* Adicione mais detalhes do curso aqui */}
+
+            <div>
+                <h2>Módulos:</h2>
+                {modulos.length > 0 ? (
+                    modulos.map((modulo) => (
+                        <div key={modulo.id}>
+                            <h3>{modulo.titulo}</h3>
+                            <p>{modulo.descricao}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>Não há módulos disponíveis para este curso.</p>
+                )}
+            </div>
         </div>
     )
-
-    const [modulos, setModulos] = useState([])
-
-    useEffect (() => {
-        const buscarModulos = async () => {
-
-            try {
-                const response = await api.get(`/cursos/${id}/modulos`)
-                setModulos(response.data)
-            } catch (error) {
-                console.error('Erro ao buscar módulos:', error)
-            }
-        }
-
-        buscarModulos()
-    }, [id])
-
-    //exibir módulos
-    {modulos.map((modulo) => (
-
-        <div key={modulo.id}>
-            <h3>{modulo.titulo}</h3>
-            <p>{modulo.descricao}</p>
-        </div>
-        
-    ))}
 }
 
 export default CourseDetails
