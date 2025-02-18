@@ -12,11 +12,15 @@ const Cadastro = () => {
         e.preventDefault()
 
         try {
-            const response = await api.post('/auth/cadastro', { nome, email, })
-            console.log('Usuário cadastrado:', response.data)
+            const response = await api.post('/auth/cadastro', { nome, email, senha})
+
+            alert('Usuário cadastrado com sucesso!')
+
             navigate('/login')
         } catch (error) {
             console.error('Erro ao cadastrar:', error)
+
+            alert('Erro ao cadastrar usuário.')
         }
     }
 

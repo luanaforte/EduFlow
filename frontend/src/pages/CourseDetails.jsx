@@ -39,7 +39,7 @@ const CourseDetails = () => {
             <h1>{curso.titulo}</h1>
             <p>{curso.descricao}</p>
             <p>Preço: R$ {curso.preco.toFixed(2)}</p>
-            {/* Adicione mais detalhes do curso aqui */}
+            {/* adicionar mais detalhes do curso */}
         </div>
     )
 
