@@ -7,8 +7,6 @@ import CourseProgress from  './pages/CourseProgress.jsx'
 import Login from './pages/Login.jsx'
 import Cadastro from './pages/Cadastro.jsx'
 
-import PrivateRoute from './components/PrivateRoute.jsx'
-
 function App() {
   return (
     <Router>
@@ -16,8 +14,7 @@ function App() {
         {/*rota pública*/}
         <Route path="/" element={<Home />} />
 
-        {/* rota privada */}
-        <Route element={<PrivateRoute />} />
+        {/* Rota para detalhes do curso */}
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/progress/:id" element={<CourseProgress />} />
 

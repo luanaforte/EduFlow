@@ -12,12 +12,11 @@ const Cadastro = () => {
         e.preventDefault()
 
         try {
-            const response = await api.post(`${process.env.REACT_APP_API_URL}/auth/cadastro`, { nome, email, })
+            const response = await api.post('/auth/cadastro', { nome, email, })
             console.log('Usuário cadastrado:', response.data)
             navigate('/login')
         } catch (error) {
             console.error('Erro ao cadastrar:', error)
-            alert(`Erro: ${error.response ? error.response : error.message}`)
         }
     }
 

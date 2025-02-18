@@ -29,6 +29,7 @@ const CourseDetails = () => {
         const buscarModulos = async () => {
             try {
                 const response = await api.get(`/cursos/${id}/modulos`)
+
                 setModulos(response.data)
             } catch (error) {
                 console.error('Erro ao buscar módulos:', error)
@@ -51,20 +52,7 @@ const CourseDetails = () => {
             <h1>{curso.titulo}</h1>
             <p>{curso.descricao}</p>
             <p>Preço: R$ {curso.preco.toFixed(2)}</p>
-
-            <div>
-                <h2>Módulos:</h2>
-                {modulos.length > 0 ? (
-                    modulos.map((modulo) => (
-                        <div key={modulo.id}>
-                            <h3>{modulo.titulo}</h3>
-                            <p>{modulo.descricao}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p>Não há módulos disponíveis para este curso.</p>
-                )}
-            </div>
+            {/* Adicione mais detalhes do curso aqui */}
         </div>
     )
 }
