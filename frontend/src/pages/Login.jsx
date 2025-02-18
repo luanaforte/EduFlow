@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import api from "../services/api";
 import { useNavigate } from "react-router-dom";
+import axios from "../services/axios.js";
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -11,7 +11,7 @@ const Login = () => {
         e.preventDefault() 
 
         try {
-            const reponse = await api.post('.auth/login', { email, senha })
+            const reponse = await axios.post('.auth/login', { email, senha })
             console.log('Login realizdo:', response.data)
             localStorage.setItem('token', response.data.token)
             navigate('/')

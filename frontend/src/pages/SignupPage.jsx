@@ -1,10 +1,11 @@
-import Cadastro from "./Cadastro";
+import React from "react"
+import SignupForm from "../components/SignupForm"
 
 const SignupPage = () => {
     return (
         <div>
             <h2>Cadastro</h2>
-            <Cadastro />
+            <SignupForm />
         </div>
     )
 }

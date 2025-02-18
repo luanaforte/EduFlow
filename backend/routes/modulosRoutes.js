@@ -1,8 +1,8 @@
 import express from 'express';
 import { listarModulos } from '../controllers/moduloController.js';
 
-const router = express.Router();
+const router = express.Router()
 
-router.get('/:cursoId/modulos', listarModulos);
+router.get('/:cursoId/modulos', listarModulos)
 
-export default router;
+export default router

@@ -5,9 +5,9 @@ import Home from './pages/Home.jsx'
 import CourseDetails from './pages/CourseDetails.jsx'
 import CourseProgress from  './pages/CourseProgress.jsx'
 import Login from './pages/Login.jsx'
-import Cadastro from './pages/Cadastro.jsx'
 
 import PrivateRoute from './components/PrivateRoute.jsx'
+import SignupPage from './pages/SignupPage.jsx'
 
 function App() {
   return (
@@ -17,13 +17,14 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* rota privada */}
-        <Route element={<PrivateRoute />} />
-        <Route path="/course/:id" element={<CourseDetails />} />
-        <Route path="/progress/:id" element={<CourseProgress />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/course/:id" element={<CourseDetails />} />
+          <Route path="/progress/:id" element={<CourseProgress />} />
+        </Route>
 
         {/* rotas para login e cadastro */}
         <Route path="/login" element={<Login />} />
-        <Route  path="/cadastro" element={<Cadastro />} />
+        <Route  path="/cadastro" element={<SignupPage />} />
 
       </Routes>
     </Router>

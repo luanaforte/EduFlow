@@ -13,15 +13,15 @@ export const listarCursos = async (req, res) => {
 
 // obtendo detalhes de um curso através do ID
 export const detalhesCurso = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params
 
     try {
         const curso = await Curso.findByPk(id);
         if (!curso) {
-            return res.status(404).json({ message: "Curso não encontrado" });
+            return res.status(404).json({ message: "Curso não encontrado" })
         }
-        res.json(curso);
+        res.json(curso)
     } catch (error) {
-        res.status(500).json({ message: "Erro ao buscar detalhes do curso", error });
+        res.status(500).json({ message: "Erro ao buscar detalhes do curso", error })
     }
 }

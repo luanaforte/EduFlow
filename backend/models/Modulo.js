@@ -20,6 +20,6 @@ const Modulo = sequelize.define("Modulo", {
         },
         onDelete: "CASCADE", 
     },
-});
+})
 
-export default Modulo;
+export default Modulo

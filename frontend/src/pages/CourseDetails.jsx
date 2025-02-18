@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import api from '../services/api.js';
+import axios from '../services/axios.js';
 
 const CourseDetails = () => {
     const { id } = useParams()
@@ -12,8 +12,13 @@ const CourseDetails = () => {
     useEffect(() => {
         const buscarCurso = async () => {
             try {
-                const response = await api.get(`/cursos/${id}`)
-                setCurso(response.data)
+                const response = await axios.get(`/cursos/${id}`)
+                if (response.data && response.data.titulo && response.data.descricao) {
+                    setCurso(response.data)
+                } else {
+                    setErro('Dados do curso não estão no formato esperado.')
+                }
+                
             } catch (error) {
                 setErro('Erro ao carregar detalhes do curso.')
                 console.error(error)
@@ -28,8 +33,13 @@ const CourseDetails = () => {
     useEffect(() => {
         const buscarModulos = async () => {
             try {
-                const response = await api.get(`/cursos/${id}/modulos`)
-                setModulos(response.data)
+                const response = await axios.get(`/cursos/${id}/modulos`)
+                if (Array.isArray(response.data)) {
+                    setModulos(response.data)
+                } else {
+                    console.error('A resposta não é um array de módulos:', response.data)
+                }
+                
             } catch (error) {
                 console.error('Erro ao buscar módulos:', error)
             }
@@ -48,9 +58,15 @@ const CourseDetails = () => {
 
     return (
         <div>
-            <h1>{curso.titulo}</h1>
-            <p>{curso.descricao}</p>
-            <p>Preço: R$ {curso.preco.toFixed(2)}</p>
+            {curso ? (
+                <>
+                    <h1>{curso.titulo}</h1>
+                    <p>{curso.descricao}</p>
+                    <p>Preço: R$ {curso.preco ? curso.preco.toFixed(2) : 'N/A'}</p>
+                </>
+            ) : (
+                <p>Curso não encontrado.</p>
+            )}
 
             <div>
                 <h2>Módulos:</h2>

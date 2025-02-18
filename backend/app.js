@@ -18,6 +18,8 @@ app.use(cors({
     methods: ['GET', 'POST'],
     credentials: true,
 }))
+
+// atente o corpo da requisição em json
 app.use(express.json())
 
 // Testando conexão com o MySQL

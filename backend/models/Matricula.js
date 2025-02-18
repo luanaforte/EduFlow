@@ -30,6 +30,6 @@ const Matricula = sequelize.define("Matricula", {
         allowNull: false,
         defaultValue: DataTypes.NOW,
     },
-});
+})
 
-export default Matricula;
+export default Matricula
