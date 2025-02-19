@@ -1,0 +1,23 @@
+input {
+    width: 100%;
+    padding: 14px 12px 14px 50px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    background-position: 10px center; 
+    background-size: 20px 20px; 
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+input#name {
+    background-image: url('../../assets/user.gif'); 
+}
+
+input#email {
+    background-image: url('../../assets/email.gif'); 
+}
+
+input#password {
+    background-image: url('../../assets/password.gif');
+}

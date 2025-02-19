@@ -4,7 +4,7 @@ import Home from './pages/Home.jsx'
 import CourseDetails from './pages/CourseDetails.jsx'
 import CourseProgress from  './pages/CourseProgress.jsx'
 import Login from './pages/Login.jsx'
-import Cadastro from './pages/Cadastro.jsx'
+import Cadastro from './pages/cadastro/Cadastro.jsx'
 
 function App() {
   return (
