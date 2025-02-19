@@ -30,10 +30,20 @@ const Cadastro = () => {
         <div className="container">
             <div id="cadastro" className="formPage">
                 <h1>Crie sua conta</h1>
+                
                 <form onSubmit={handleCadastro} className="input">
-                    <InputName value={nome} onChange={(e) => setNome(e.target.value)}/>
-                    <InputEmail value={email} onChange={(e) => setEmail(e.target.value)}/>
-                    <InputPass value={senha} onChange={(e) => setSenha(e.target.value)}/>
+                    <InputName
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                    />
+                    <InputEmail
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <InputPass
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                    />
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
